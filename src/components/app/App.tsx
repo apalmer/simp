@@ -1,13 +1,23 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { CreateLogin } from "../security/CreateLogin";
+import { DeleteLogin } from "../security/DeleteLogin";
+import { SignIn } from "../security/SignIn";
+import { SignOut } from "../security/SignOut";
+import { Home  } from "../home/Home";
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-     <div>app</div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/createLogin" element={<CreateLogin />} />
+        <Route path="/deleteLogin" element={<DeleteLogin />} />
+        <Route path="/signIn" element={<SignIn/>} />
+        <Route path="/signOut" element={<SignOut/>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
