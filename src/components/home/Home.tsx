@@ -1,21 +1,20 @@
-import { useEffect } from "react";
-import { } from "module";
+import { useEffect, useState } from "react";
 import { auth, onAuthStateChanged } from "../../firebase/auth"
 export function Home() {
 
-    let userId = '';
+    const [user, setUser] = useState({});
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                userId = user.uid;
-                console.log('userId: ', userId);
+                setUser(user);
+                console.log('userId: ', user.uid);
             }
         });
     }, []);
 
     return (
         <div>
-            User id: {userId}
+            User id: {JSON.stringify(user)}
         </div>
     )
 }

@@ -9,6 +9,6 @@ import { app } from "./app";
 
 export const auth = getAuth(app);
 export const onAuthStateChanged = firebaseOnAuthStateChanged;
-export const createUserWithEmailAndPasswordf = firebaseCreateUserWithEmailAndPassword;
-export const signInWithEmailAndPasswordf = firebaseSignInWithEmailAndPassword;
-export const signOutf = firebaseSignOut;
+export const createUserWithEmailAndPassword = firebaseCreateUserWithEmailAndPassword;
+export const signInWithEmailAndPassword = firebaseSignInWithEmailAndPassword;
+export const signOut = firebaseSignOut;
