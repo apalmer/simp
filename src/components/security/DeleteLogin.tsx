@@ -1,18 +1,21 @@
-import { useState } from "react";
-import { auth, onAuthStateChanged } from "../../firebase/auth";
+import { useState, useEffect } from "react";
 import { User } from "firebase/auth"
+import { auth, onAuthStateChanged } from "../../firebase/auth";
+
 export function DeleteLogin() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState<User|null>();
     const [response,setResponse] = useState('');
 
-    onAuthStateChanged(auth, (signedInUser) => {
-        if (signedInUser) {
-            setUser(signedInUser);
-            console.log('userId: ', signedInUser.uid);
-        }
-    })
+   useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+                console.log('user: ', user);
+            }
+        });
+    }, []);
 
     const onSubmit = async (e: any) => {
         e.preventDefault();
@@ -47,7 +50,7 @@ export function DeleteLogin() {
                 <button type="submit" onClick={onSubmit}>Delete Login</button>
             </form >
             <div>
-                User Id: {JSON.stringify(user)}
+                User: {JSON.stringify(user)}
                 Response: {response}
             </div>
         </div >

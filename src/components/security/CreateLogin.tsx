@@ -6,7 +6,7 @@ export function CreateLogin() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [creds, setCreds] = useState({});
-    const [raw, setRaw] = useState('initial raw');
+    const [response, setResponse] = useState('');
 
     const onSubmit = async (e: any) => {
         e.preventDefault();
@@ -17,13 +17,13 @@ export function CreateLogin() {
         try {
             let retreivedCreds = await createUserWithEmailAndPassword(auth, username, password);
             setCreds(retreivedCreds)
-            setRaw("raw updated");
+            setResponse('created user');
         }
         catch (e) {
             console.log('error thrown');
             const err = await e;
             setCreds(JSON.stringify(err));
-            setRaw("raw updated");
+            setResponse('error creating user');
 
         }
     }
@@ -46,8 +46,8 @@ export function CreateLogin() {
                 <button type="submit" onClick={onSubmit}>Create Login</button>
             </form >
             <div>
-                { JSON.stringify(creds)}
-                {raw}
+                User: { JSON.stringify(creds)}
+                Response: { response }
             </div>
         </div >
     )
