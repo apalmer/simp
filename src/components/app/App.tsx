@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CreateLogin } from "../security/CreateLogin";
 import { DeleteLogin } from "../security/DeleteLogin";
+import { AnonymousSignIn } from "../security/AnonymousSignIn";
 import { SignIn } from "../security/SignIn";
 import { SignOut } from "../security/SignOut";
-import { Home  } from "../home/Home";
+import { Home } from "../home/Home";
 import './App.css'
 
 function App() {
@@ -14,8 +15,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/createLogin" element={<CreateLogin />} />
         <Route path="/deleteLogin" element={<DeleteLogin />} />
-        <Route path="/signIn" element={<SignIn/>} />
-        <Route path="/signOut" element={<SignOut/>} />
+        <Route path="/anonymous" element={<AnonymousSignIn />} />
+        <Route path="/signIn" element={<SignIn />} />
+        <Route path="/signOut" element={<SignOut />} />
       </Routes>
     </BrowserRouter>
   )
